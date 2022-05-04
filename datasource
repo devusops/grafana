@@ -1,0 +1,61 @@
+Creating IAM policy
+
+To create an IAM policy, In the navigation pane, Choose Policies
+
+Click Create Policy and choose JSON, Remove the existing policy and then add the below policy.
+
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "AllowReadingMetricsFromCloudWatch",
+            "Effect": "Allow",
+            "Action": [
+                "cloudwatch:DescribeAlarmsForMetric",
+                "cloudwatch:DescribeAlarmHistory",
+                "cloudwatch:DescribeAlarms",
+                "cloudwatch:ListMetrics",
+                "cloudwatch:GetMetricStatistics",
+                "cloudwatch:GetMetricData",
+                "logs:DescribeLogGroups"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Sid": "AllowReadingTagsInstancesRegionsFromEC2",
+            "Effect": "Allow",
+            "Action": [
+                "ec2:DescribeTags",
+                "ec2:DescribeInstances",
+                "ec2:DescribeRegions"
+            ],
+            "Resource": "*"
+        }
+    ]
+}
+
+and click Review policy, provide a name for the IAM policy and click Create policy
+
+Creating IAM Role
+
+Next, We need to create an IAM Role and attach the IAM policy with it.
+
+Click Roles and then choose Create role, For AWS Service, Choose EC2 and click Next: permissions
+
+
+Click the Role and there you will find a Role ARN as shown below.
+
+arn:aws:iam::00000000000:role/role_name
+Copy the Role ARN and the click Trust relationships, Click Edit trust relationship, Under Principal after Service, Add the Role ARN as shown below.
+
+"AWS": "arn:aws:iam::00000000000:role/role_name"
+
+And click Update Trust Policy
+
+Attaching IAM Role with Grafana Instance
+
+
+
+
+
+
