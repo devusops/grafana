@@ -24,3 +24,6 @@ sudo systemctl enable grafana-server.service
 http://publicipaddress:3000
 
 
+default user admin pass admin
+
+
